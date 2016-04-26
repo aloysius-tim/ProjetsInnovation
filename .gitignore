@@ -380,3 +380,7 @@ crashlytics-build.properties
 fabric.properties
 
 .idea/
+
+build.xml
+manifest.mf
+nbproject/
