@@ -8,13 +8,13 @@ package projetsinnovation.common;
 import java.io.Serializable;
 import projetsinnovation.common.model.Idea;
 import projetsinnovation.common.model.Student;
+import projetsinnovation.common.model.Technologies;
 
 /**
  *
  * @author Sofiane
  */
 public interface IProjetInnovation {
-
-    public Serializable getIdeas();
-    public Serializable createIdea(Student author, Idea idea);
+    Serializable getIdeas();
+    Serializable createIdea(String description, String technologies, Student author);
 }
