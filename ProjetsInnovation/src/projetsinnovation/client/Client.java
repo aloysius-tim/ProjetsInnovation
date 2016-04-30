@@ -5,6 +5,7 @@
  */
 package projetsinnovation.client;
 
+import projetsinnovation.common.*;
 /**
  *
  * @author Sofiane
