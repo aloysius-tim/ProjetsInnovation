@@ -5,10 +5,18 @@
  */
 package projetsinnovation.common.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sofiane
  */
-public class Student {
-    
+public class Student implements Serializable{
+    private String nom;
+    private String mail;
+
+    public Student(String nom, String mail) {
+        this.nom = nom;
+        this.mail = mail;
+    }
 }

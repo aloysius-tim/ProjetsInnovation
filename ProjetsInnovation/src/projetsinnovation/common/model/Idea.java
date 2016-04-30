@@ -5,10 +5,32 @@
  */
 package projetsinnovation.common.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sofiane
  */
-public class Idea {
-    
+public class Idea implements Serializable{
+    private String description;
+    private Technologies technologies;
+    private Student author;
+
+    public Idea(String description, Technologies technologies, Student author) {
+        this.description = description;
+        this.technologies = technologies;
+        this.author = author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Technologies getTechnologies() {
+        return technologies;
+    }
+
+    public Student getAuthor() {
+        return author;
+    }
 }
