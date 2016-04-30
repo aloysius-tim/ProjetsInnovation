@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetsinnovation.common;
-
-import java.io.Serializable;
-import java.util.HashMap;
+package projetsinnovation.server;
 
 /**
  *
  * @author Sofiane
  */
-public class Request implements Serializable {
- 
-    private String method;
-    private HashMap<String, Object> args;
+public interface IServable {
+
 }

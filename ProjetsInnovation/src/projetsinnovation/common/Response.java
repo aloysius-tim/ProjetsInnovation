@@ -5,10 +5,15 @@
  */
 package projetsinnovation.common;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sofiane
  */
 public class Response {
     
+    private String status;
+    private String message;
+    private Serializable value;
 }
