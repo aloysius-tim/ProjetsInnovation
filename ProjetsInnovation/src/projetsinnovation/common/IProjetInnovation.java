@@ -6,14 +6,15 @@
 package projetsinnovation.common;
 
 import java.io.Serializable;
+import projetsinnovation.common.model.Idea;
+import projetsinnovation.common.model.Student;
 
 /**
  *
  * @author Sofiane
  */
-public class Response implements Serializable {
-    
-    private String status;
-    private String message;
-    private Serializable value;
+public interface IProjetInnovation {
+
+    public Serializable getIdeas();
+    public Serializable createIdea(Student author, Idea idea);
 }

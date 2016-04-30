@@ -7,6 +7,7 @@ package projetsinnovation.server;
 
 import java.io.*;
 import java.net.*;
+import projetsinnovation.common.*;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Server {
     private Integer port;
     private ServerSocket socket;
     private Speaker speaker;
+    private Service service;
     
     public Server(Integer port) {
         this.port = port;
@@ -29,6 +31,9 @@ public class Server {
             try {
                 Socket s = this.socket.accept();
                 OutputStream oos = s.getOutputStream();
+                this.service.setRequest(null);
+                Response response = this.service.getResponse();
+                // Serialize response & send to client
             } catch (IOException e) {
                 this.speaker.speakException(e);
             } catch (Exception e) {
