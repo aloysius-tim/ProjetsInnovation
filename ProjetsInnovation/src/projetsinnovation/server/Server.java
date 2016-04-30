@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package projetsinnovation.server;
 
 import java.io.*;
@@ -15,35 +15,56 @@ import projetsinnovation.common.*;
  */
 public class Server {
     
-    private Integer port;
+    private Integer port = 8000;
     private ServerSocket socket;
-    private Speaker speaker;
-    private Service service;
     
-    public Server(Integer port) {
-        this.port = port;
-        this.speaker = new Speaker();
-    }
-    
-    public void launch() {
-        this.speaker.announceStart(this.port);
-        while(true) {
-            try {
-                Socket s = this.socket.accept();
-                OutputStream oos = s.getOutputStream();
-                this.service.setRequest(null);
-                Response response = this.service.getResponse();
-                // Serialize response & send to client
-            } catch (IOException e) {
-                this.speaker.speakException(e);
-            } catch (Exception e) {
-                this.speaker.speakException(e);
-            }
+    public Server() {
+        try {
+            this.socket = new ServerSocket(this.port);
+        }catch(IOException io){
+            Speaker.speakException(io);
+            System.exit(1);
         }
     }
     
-    public static void main(String[] args) {
-        Server server = new Server(6000);
-        server.launch();
+    public Server(Integer port) {
+        try {
+            this.port = port;
+            this.socket = new ServerSocket(this.port);
+        }catch(IOException io){
+            Speaker.speakException(io);
+            System.exit(1);
+        }
+    }
+    
+    public void launch() {
+        Speaker.announceStart(this.port);
+        while(true) {
+            try {
+                Socket s = this.socket.accept();
+                new Thread() { // On alloue un thread
+                    public void run() {
+                        try {
+                            ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
+                            ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
+
+                            Service service = new Service();
+                            service.setRequest((Request) ois.readObject());
+                            
+                            oos.writeObject(service.getResponse());
+                            oos.close();
+                        } catch (IOException e) {
+                            Speaker.speakException(e);
+                        } catch (ClassNotFoundException e) {
+                            Speaker.speakException(e);
+                        }
+                    }
+                }.start();
+            } catch (IOException e) {
+                Speaker.speakException(e);
+            } catch (Exception e) {
+                Speaker.speakException(e);
+            }
+        }
     }
 }

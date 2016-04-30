@@ -11,19 +11,21 @@ package projetsinnovation.server;
  */
 public class Speaker {
     
-    public Speaker() {
-        
+    private Speaker() {}
+    
+    public static void speakError(String message) {
+        System.out.println(message);
     }
     
-    public void announceStart(Integer port) {
+    public static void announceStart(Integer port) {
         System.out.println("Server is started on port " + port.toString());
     }
     
-    public void speak(Object o) {
+    public static void speak(Object o) {
         System.out.println(o.toString());
     }
     
-    public void speakException(Exception e) {
+    public static void speakException(Exception e) {
         e.printStackTrace();
     }
 }

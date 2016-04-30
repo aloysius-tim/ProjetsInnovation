@@ -5,6 +5,9 @@
  */
 package projetsinnovation;
 
+import projetsinnovation.server.Server;
+import projetsinnovation.server.Speaker;
+
 /**
  *
  * @author Sofiane
@@ -15,7 +18,13 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            Server server = new Server(6000);
+            server.launch();
+        } catch (Exception e) {
+            Speaker.speakException(e);
+        }
+        
     }
     
 }
