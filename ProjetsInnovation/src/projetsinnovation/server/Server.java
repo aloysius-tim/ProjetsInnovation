@@ -17,10 +17,12 @@ public class Server {
     
     private Integer port = 8000;
     private ServerSocket socket;
+    private Service service;
     
     public Server() {
         try {
             this.socket = new ServerSocket(this.port);
+            this.service = new Service();
         }catch(IOException io){
             Speaker.speakException(io);
             System.exit(1);
@@ -30,6 +32,7 @@ public class Server {
     public Server(Integer port) {
         try {
             this.port = port;
+            this.service = new Service();
             this.socket = new ServerSocket(this.port);
         }catch(IOException io){
             Speaker.speakException(io);
@@ -42,24 +45,19 @@ public class Server {
         while(true) {
             try {
                 Socket s = this.socket.accept();
-                new Thread() { // On alloue un thread
-                    public void run() {
-                        try {
-                            ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
-                            ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
-
-                            Service service = new Service();
-                            service.setRequest((Request) ois.readObject());
-                            
-                            oos.writeObject(service.getResponse());
-                            oos.close();
-                        } catch (IOException e) {
-                            Speaker.speakException(e);
-                        } catch (ClassNotFoundException e) {
-                            Speaker.speakException(e);
-                        }
-                    }
-                }.start();
+                try {
+                    ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
+                    ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
+                    
+                    Response response = this.service.serve((Request)ois.readObject());
+                    
+                    oos.writeObject(response);
+                    oos.close();
+                } catch (IOException e) {
+                    Speaker.speakException(e);
+                } catch (ClassNotFoundException e) {
+                    Speaker.speakException(e);
+                }
             } catch (IOException e) {
                 Speaker.speakException(e);
             } catch (Exception e) {

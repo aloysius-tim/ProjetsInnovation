@@ -6,20 +6,16 @@
 package projetsinnovation.common;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 /**
  *
  * @author Sofiane
  */
 public class Request implements Serializable {
+    
     private Object[] args;
     private String method;
     private String name;
-
-    public Request() {
-
-    }
 
     public Request(String name, Object[] args, String method) {
         this.name = name;

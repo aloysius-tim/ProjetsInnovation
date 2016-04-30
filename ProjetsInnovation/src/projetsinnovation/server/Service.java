@@ -5,28 +5,28 @@
  */
 package projetsinnovation.server;
 
+import java.io.Serializable;
 import projetsinnovation.common.*;
+import projetsinnovation.common.model.Idea;
+import projetsinnovation.common.model.Student;
 
 /**
  *
  * @author Sofiane
  */
-public class Service {
+public class Service implements IProjetInnovation {
     
-    private Request request;
-    private Response response;
-    
-    
-    public void setRequest(Request request) {
-        this.request = request;
+    public Response serve(Request request) {
+        return null;
     }
-    
-    private void setResponse() {
-        
+
+    @Override
+    public Serializable getIdeas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public Response getResponse() {
-        this.setResponse();
-        return this.response;
+
+    @Override
+    public Serializable createIdea(Student author, Idea idea) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
