@@ -26,7 +26,7 @@ public class Service implements IProjetInnovation {
     }
 
     @Override
-    public Serializable createIdea(Student author, Idea idea) {
+    public Serializable createIdea(String description, String technologies, Student author) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
