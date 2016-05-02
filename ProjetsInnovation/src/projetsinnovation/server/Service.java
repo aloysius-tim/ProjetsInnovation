@@ -8,6 +8,7 @@ package projetsinnovation.server;
 import java.io.Serializable;
 import projetsinnovation.common.*;
 import projetsinnovation.common.model.Idea;
+import projetsinnovation.common.model.ProjetInnovation;
 import projetsinnovation.common.model.Student;
 
 /**
@@ -15,18 +16,23 @@ import projetsinnovation.common.model.Student;
  * @author Sofiane
  */
 public class Service implements IProjetInnovation {
-    
+    private ProjetInnovation projetInnovation;
+
+    public Service() {
+        this.projetInnovation=new ProjetInnovation();
+    }
+
     public Response serve(Request request) {
         return null;
     }
 
     @Override
     public Serializable getIdeas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.projetInnovation.getIdeas();
     }
 
     @Override
-    public Serializable createIdea(Student author, Idea idea) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Serializable createIdea(String description, String technologies, Student author) {
+        return this.projetInnovation.createIdea(description, technologies, author);
     }
 }

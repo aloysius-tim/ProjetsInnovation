@@ -5,16 +5,15 @@
  */
 package projetsinnovation.client;
 
-import projetsinnovation.common.*;
-/**
- *
- * @author Sofiane
- */
+import projetsinnovation.common.Request;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Method;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+
+/**
+ * @author Sofiane
+ */
 
 /**
  * @author Alain Defrance

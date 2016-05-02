@@ -53,13 +53,9 @@ public class Server {
                     
                     oos.writeObject(response);
                     oos.close();
-                } catch (IOException e) {
-                    Speaker.speakException(e);
-                } catch (ClassNotFoundException e) {
+                } catch (IOException | ClassNotFoundException e) {
                     Speaker.speakException(e);
                 }
-            } catch (IOException e) {
-                Speaker.speakException(e);
             } catch (Exception e) {
                 Speaker.speakException(e);
             }

@@ -5,7 +5,6 @@ import projetsinnovation.common.IProjetInnovation;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Aloysius_tim on 30/04/2016.
@@ -24,5 +23,4 @@ public class ProjetInnovation implements IProjetInnovation{
         ideas.put(idea, new ArrayList<Student>());
         return idea;
     }
-
 }
