@@ -21,4 +21,6 @@ public class Response implements Serializable {
         this.message = message;
         this.value = value;
     }
+    
+    public String getMessage() { return message; }
 }

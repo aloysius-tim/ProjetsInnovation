@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package projetsinnovation.client;
 
 import projetsinnovation.common.Request;
@@ -10,6 +10,9 @@ import projetsinnovation.common.Request;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Method;
+import java.net.Socket;
+import projetsinnovation.common.Response;
+import projetsinnovation.server.Speaker;
 
 /**
  * @author Sofiane
@@ -22,15 +25,35 @@ public class Client {
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
     private String name;
-
-    public Client(String name, ObjectInputStream ois, ObjectOutputStream oos) {
-        this.name = name;
-        this.ois = ois;
-        this.oos = oos;
+    private Socket server;
+    
+    public Client() {
+        this.connect("localhost", 6000);
     }
-
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        oos.writeObject(new Request(name, args, method.getName()));
-        return ois.readObject();
+    
+    private void connect(String host, Integer port) {
+        try {
+            this.server = new Socket(host, port);
+            ois = new ObjectInputStream(this.server.getInputStream());
+            oos = new ObjectOutputStream(this.server.getOutputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void call(String method) {
+        try {
+            Request request = new Request(method);
+            oos.writeObject(request);
+            Response response = (Response)ois.readObject();
+            Speaker.speak(response.getMessage());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void main(String[] args) {
+        Client client = new Client();
+        client.call("getIdeas");
     }
 }
