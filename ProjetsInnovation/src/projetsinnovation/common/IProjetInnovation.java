@@ -6,9 +6,7 @@
 package projetsinnovation.common;
 
 import java.io.Serializable;
-import projetsinnovation.common.model.Idea;
-import projetsinnovation.common.model.Student;
-import projetsinnovation.common.model.Technologies;
+import projetsinnovation.common.model.*;
 
 /**
  *
@@ -16,5 +14,5 @@ import projetsinnovation.common.model.Technologies;
  */
 public interface IProjetInnovation {
     Serializable getIdeas();
-    Serializable createIdea(String description, String technologies, Student author);
+    Serializable createIdea(Idea idea);
 }

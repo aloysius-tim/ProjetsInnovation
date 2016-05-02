@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author Sofiane
  */
 public class Idea implements Serializable{
+    
     private String description;
     private Technologies technologies;
     private Student author;
