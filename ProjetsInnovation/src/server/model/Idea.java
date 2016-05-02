@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetsinnovation.common.model;
+package server.model;
 
 import java.io.Serializable;
 
@@ -12,7 +12,6 @@ import java.io.Serializable;
  * @author Sofiane
  */
 public class Idea implements Serializable{
-    
     private String description;
     private Technologies technologies;
     private Student author;
@@ -33,5 +32,14 @@ public class Idea implements Serializable{
 
     public Student getAuthor() {
         return author;
+    }
+
+    @Override
+    public String toString() {
+        return "Idea{" +
+                "description='" + description + '\'' +
+                ", technologies=" + technologies +
+                ", author=" + author +
+                '}';
     }
 }

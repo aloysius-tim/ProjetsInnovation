@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetsinnovation.common;
+package common;
+
+
+import server.model.Student;
 
 import java.io.Serializable;
-import projetsinnovation.common.model.*;
 
 /**
  *
@@ -14,5 +16,5 @@ import projetsinnovation.common.model.*;
  */
 public interface IProjetInnovation {
     Serializable getIdeas();
-    Serializable createIdea(Idea idea);
+    Serializable createIdea(String description, String technologies, Student author);
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetsinnovation.common.model;
+package server.model;
 
 import java.io.Serializable;
 
@@ -34,5 +34,13 @@ public class Student implements Serializable{
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "nom='" + nom + '\'' +
+                ", mail='" + mail + '\'' +
+                '}';
     }
 }

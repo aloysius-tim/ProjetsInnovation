@@ -1,4 +1,4 @@
-package projetsinnovation.common.model;
+package server.model;
 
 import java.io.Serializable;
 
