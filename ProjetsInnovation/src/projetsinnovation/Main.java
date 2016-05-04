@@ -23,8 +23,6 @@ public class Main {
             server.launch();
         } catch (Exception e) {
             Speaker.speakException(e);
-        }
-        
-    }
-    
+        } 
+    } 
 }

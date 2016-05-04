@@ -49,7 +49,10 @@ public class Server {
                     ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
                     ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
                     
-                    Response response = this.service.serve((Request)ois.readObject());
+                    Request request = (Request)ois.readObject();
+                    Speaker.speak("New request : " + request);
+                    
+                    Response response = this.service.serve(request);
                     
                     oos.writeObject(response);
                     oos.close();

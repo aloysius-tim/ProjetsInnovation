@@ -44,9 +44,12 @@ public class Client {
     public void call(String method) {
         try {
             Request request = new Request(method);
+            Speaker.speak("Sending request : " + request);
+            Speaker.speak("_______________________________");
             oos.writeObject(request);
             Response response = (Response)ois.readObject();
-            Speaker.speak(response.getMessage());
+            Speaker.speak("Received response : " + response);
+            Speaker.speak("_______________________________");
         } catch(Exception e) {
             e.printStackTrace();
         }

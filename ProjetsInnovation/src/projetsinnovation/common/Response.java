@@ -23,4 +23,13 @@ public class Response implements Serializable {
     }
     
     public String getMessage() { return message; }
+    public Serializable getValue() { return value; }
+    
+    @Override
+    public String toString() {
+        String r = "\n\tstatus \t\t: " + status.toString();
+        r += "\n\tmessage \t: " + message;
+        r += "\n\tvalue \t\t: " + value.toString();
+        return r;
+    }
 }

@@ -40,4 +40,16 @@ public class Request implements Serializable {
     public void setMethod(String method) {
         this.method = method;
     }
+    
+    @Override
+    public String toString() {
+        String r = "\n\tmethod \t\t: " + method + "\n\targs \t\t: [";
+        if(this.args != null) {
+            for(Object o : this.args)
+                r += o.toString() + "\n\t\t";
+            r += "\n\t";
+        }
+        r += "]";
+        return r;
+    }
 }
