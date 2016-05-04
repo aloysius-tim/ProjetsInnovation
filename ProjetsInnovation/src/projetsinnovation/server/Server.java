@@ -7,6 +7,9 @@ package projetsinnovation.server;
 
 import java.io.*;
 import java.net.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import projetsinnovation.common.*;
 
 /**
@@ -50,7 +53,8 @@ public class Server {
                     ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
                     
                     Request request = (Request)ois.readObject();
-                    Speaker.speak("New request : " + request);
+                    
+                    Speaker.speakWithTime("New request " + request);
                     
                     Response response = this.service.serve(request);
                     

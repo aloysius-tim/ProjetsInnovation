@@ -5,6 +5,10 @@
  */
 package projetsinnovation.server;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Sofiane
@@ -23,6 +27,12 @@ public class Speaker {
     
     public static void speak(Object o) {
         System.out.println(o.toString());
+    }
+    
+    public static void speakWithTime(Object o) {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        String time = dateFormat.format(new Date());
+        Speaker.speak(time + " " + o.toString());
     }
     
     public static void speakException(Exception e) {
