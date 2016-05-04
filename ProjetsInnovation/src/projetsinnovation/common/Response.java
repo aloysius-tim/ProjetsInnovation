@@ -43,6 +43,9 @@ public class Response implements Serializable {
                 
             }
             r += "\n\t";
+        } else if(this.value instanceof Exception) {
+            Exception e = (Exception)this.value;
+            r += e.getClass().getSimpleName();
         }
         
         

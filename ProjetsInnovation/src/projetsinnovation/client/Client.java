@@ -44,13 +44,7 @@ public class Client {
     
     public void call(String method) {
         try {
-            Request request = new Request(method);
-            Speaker.speakWithTime("Sending request : " + request);
-            Speaker.speak("_______________________________");
-            oos.writeObject(request);
-            Response response = (Response)ois.readObject();
-            Speaker.speakWithTime("Received response : " + response);
-            Speaker.speak("_______________________________");
+            this.call(method, null);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -70,8 +64,18 @@ public class Client {
         }
     }
     
+    private void getIdeas() {this.call("getIdeas");}
+    private void createIdea(Idea idea) {this.call("createIdea", new Object[]{idea});}
+    private void getTeam(Idea idea) {this.call("getTeam", new Object[]{idea});}
+    private void subscribeTo(Idea idea, Student student) {this.call("subscribeTo", new Object[]{idea,student});}
+    
     public static void main(String[] args) {
         Client client = new Client();
-        client.call("getIdeas");
+        
+        Student s = new Student("John", "john@doe.com"); // Nouvel étudiant
+        Idea idea = new Idea("Je veux faire un nouveau Uber", Technologies.WEB, s, null); // Idée déjà existante
+        Idea idea2 = new Idea("Voici une nouvelle idée", Technologies.MOBILE, s, null); // Nouvelle idée
+
+        client.getTeam(idea);
     }
 }

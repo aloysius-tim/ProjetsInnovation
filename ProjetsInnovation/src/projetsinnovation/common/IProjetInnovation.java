@@ -5,9 +5,7 @@
  */
 package projetsinnovation.common;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import projetsinnovation.common.model.*;
 
 /**
@@ -16,5 +14,7 @@ import projetsinnovation.common.model.*;
  */
 public interface IProjetInnovation {
     ArrayList<Idea> getIdeas();
+    ArrayList<Student> getTeam(Idea idea);
     Idea createIdea(Idea idea);
+    Idea subscribeTo(Idea idea, Student student);
 }

@@ -39,16 +39,33 @@ public class ProjetInnovation implements IProjetInnovation {
         this.ideas.add(i3);
         this.ideas.add(i4);
     }
-
+    
     @Override
     public ArrayList<Idea> getIdeas() {
         return this.ideas;
     }
-
+    
     @Override
     public Idea createIdea(Idea idea) {
         this.ideas.add(idea);
         return idea;
     }
-
+    
+    @Override
+    public ArrayList<Student> getTeam(Idea idea) {
+        for(Idea i : this.ideas) {
+            if(i.getDescription().equals(idea.getDescription())) return i.getTeam();
+        }
+        return null;
+    }
+    
+    @Override
+    public Idea subscribeTo(Idea idea, Student student) {
+        for(Idea i : this.ideas) {
+            if(i.getDescription().equals(idea.getDescription()))
+                i.addStudent(student);
+        }
+        return idea;    
+    }
+    
 }

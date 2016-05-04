@@ -6,7 +6,7 @@
 package projetsinnovation.common.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,9 +19,9 @@ public class Idea implements Serializable{
     private String description;
     private Technologies technologies;
     private Student author;
-    private List<Student> team;
+    private ArrayList<Student> team;
 
-    public Idea(String description, Technologies technologies, Student author, List<Student> team) {
+    public Idea(String description, Technologies technologies, Student author, ArrayList<Student> team) {
         this.description = description;
         this.technologies = technologies;
         this.author = author;
@@ -31,6 +31,11 @@ public class Idea implements Serializable{
     public String getDescription() {return description;}
     public Technologies getTechnologies() {return technologies;}
     public Student getAuthor() {return author;}
+    public ArrayList<Student> getTeam() {return this.team;}
+    
+    public void addStudent(Student student) {
+        this.team.add(student);
+    }
 
     @Override
     public String toString() {

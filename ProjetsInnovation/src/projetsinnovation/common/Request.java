@@ -46,10 +46,11 @@ public class Request implements Serializable {
         String r = "\n\tmethod \t\t: " + method + "\n\targs \t\t: [";
         if(this.args != null) {
             for(Object o : this.args) {
-                r += "\n\t\t";
-                r += o.toString();
+                if(o != null) {
+                    r += "\n\t\t";
+                    r += o.toString();
+                }
             }
-            
             r += "\n\t";
         }
         r += "]";
