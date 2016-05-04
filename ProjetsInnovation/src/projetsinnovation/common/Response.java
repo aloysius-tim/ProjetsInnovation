@@ -6,6 +6,7 @@
 package projetsinnovation.common;
 
 import java.io.Serializable;
+import projetsinnovation.server.Speaker;
 
 /**
  *
@@ -29,12 +30,23 @@ public class Response implements Serializable {
     public String toString() {
         if(status == null) status = Status.NOSTATUS;
         if(message == null) message = "null";
-        if(value == null) value = "null";
-        
+        if(value == null) value = "null";        
         
         String r = "\n\tstatus \t\t: " + status.toString();
         r += "\n\tmessage \t: " + message;
-        r += "\n\tvalue \t\t: " + value.toString();
+        r += "\n\tvalue \t\t: [";
+        if(this.value instanceof Iterable || this.value instanceof Object[]) {
+            
+            Iterable l = (Iterable) this.value;
+            for(Object o : l) {
+                r += "\n\t\t";
+                r += o.toString();
+                
+            }
+        }
+        r += "\n\t";
+        
+        r += "]";
         return r;
     }
 }

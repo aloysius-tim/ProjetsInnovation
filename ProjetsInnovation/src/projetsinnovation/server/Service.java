@@ -8,6 +8,8 @@ package projetsinnovation.server;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
 import projetsinnovation.common.*;
 import projetsinnovation.common.model.Idea;
 import projetsinnovation.common.model.Student;
@@ -40,12 +42,12 @@ public class Service implements IProjetInnovation {
     }
 
     @Override
-    public Serializable getIdeas() {
+    public ArrayList<Idea> getIdeas() {
         return this.model.getIdeas();
     }
 
     @Override
-    public Serializable createIdea(Idea idea) {
+    public Idea createIdea(Idea idea) {
         return this.model.createIdea(idea);
     }
 }

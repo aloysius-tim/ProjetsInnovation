@@ -6,6 +6,7 @@
 package projetsinnovation.common.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -13,25 +14,26 @@ import java.io.Serializable;
  */
 public class Idea implements Serializable{
     
+    private static final long serialVersionUID = 67L;
+    
     private String description;
     private Technologies technologies;
     private Student author;
+    private List<Student> team;
 
-    public Idea(String description, Technologies technologies, Student author) {
+    public Idea(String description, Technologies technologies, Student author, List<Student> team) {
         this.description = description;
         this.technologies = technologies;
         this.author = author;
+        this.team = team;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescription() {return description;}
+    public Technologies getTechnologies() {return technologies;}
+    public Student getAuthor() {return author;}
 
-    public Technologies getTechnologies() {
-        return technologies;
-    }
-
-    public Student getAuthor() {
-        return author;
+    @Override
+    public String toString() {
+        return this.technologies + " : " + this.description + " (" + this.author + ")";
     }
 }

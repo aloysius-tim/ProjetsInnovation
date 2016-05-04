@@ -2,27 +2,52 @@ package projetsinnovation.server;
 
 import projetsinnovation.common.IProjetInnovation;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import projetsinnovation.common.model.Idea;
-import projetsinnovation.common.model.IdeaList;
-import projetsinnovation.common.model.Student;
+import projetsinnovation.common.model.*;
 
 /**
  * Created by Aloysius_tim on 30/04/2016.
  */
 public class ProjetInnovation implements IProjetInnovation {
-    private HashMap<Idea, ArrayList<Student>> ideas;
-
-    @Override
-    public Serializable getIdeas() {
-        return new IdeaList(ideas.keySet());
+    
+    private ArrayList<Idea> ideas = new ArrayList<Idea>();
+    
+    public ProjetInnovation() {
+        
+        ArrayList<Student> students1 = new ArrayList<Student>();
+        ArrayList<Student> students2 = new ArrayList<Student>();
+        
+        Student s1 = new Student("Tim", "tim@keynes.fr");
+        Student s2 = new Student("Sofiane", "sofiane@taleb.fr");
+        Student s3 = new Student("Max", "max@carlier.fr");
+        Student s4 = new Student("Théo", "theo@frasquet.fr");
+        
+        students1.add(s1);
+        students1.add(s2);
+        students1.add(s3);
+        students2.add(s4);
+        students2.add(s3);
+        students2.add(s2);
+        
+        Idea i1 = new Idea("Je veux faire un nouveau Uber", Technologies.MOBILE, s1, students1);
+        Idea i2 = new Idea("Plateforme de rencontre pour étudiants", Technologies.MOBILE, s2, students1);
+        Idea i3 = new Idea("Site de news autour de Polytech", Technologies.WEB, s3, students2);
+        Idea i4 = new Idea("Un service web autour des cours", Technologies.OTHER, s4, students2);
+        
+        this.ideas.add(i1);
+        this.ideas.add(i2);
+        this.ideas.add(i3);
+        this.ideas.add(i4);
     }
 
     @Override
-    public Serializable createIdea(Idea idea) {
-        ideas.put(idea, new ArrayList<Student>());
+    public ArrayList<Idea> getIdeas() {
+        return this.ideas;
+    }
+
+    @Override
+    public Idea createIdea(Idea idea) {
+        this.ideas.add(idea);
         return idea;
     }
 

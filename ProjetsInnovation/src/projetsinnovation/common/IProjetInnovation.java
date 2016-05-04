@@ -6,6 +6,8 @@
 package projetsinnovation.common;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import projetsinnovation.common.model.*;
 
 /**
@@ -13,6 +15,6 @@ import projetsinnovation.common.model.*;
  * @author Sofiane
  */
 public interface IProjetInnovation {
-    Serializable getIdeas();
-    Serializable createIdea(Idea idea);
+    ArrayList<Idea> getIdeas();
+    Idea createIdea(Idea idea);
 }
