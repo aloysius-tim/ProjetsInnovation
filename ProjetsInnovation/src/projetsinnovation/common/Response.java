@@ -27,6 +27,11 @@ public class Response implements Serializable {
     
     @Override
     public String toString() {
+        if(status == null) status = Status.NOSTATUS;
+        if(message == null) message = "null";
+        if(value == null) value = "null";
+        
+        
         String r = "\n\tstatus \t\t: " + status.toString();
         r += "\n\tmessage \t: " + message;
         r += "\n\tvalue \t\t: " + value.toString();
