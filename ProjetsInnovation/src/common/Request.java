@@ -8,6 +8,7 @@ public class Request implements Serializable {
     private String name;
 
     public Request() {
+
     }
 
     public Request(String name, Object[] args, String method) {

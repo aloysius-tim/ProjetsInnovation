@@ -1,8 +1,6 @@
 package client;
 
-import common.AddInterface;
 import common.IProjetInnovation;
-import server.model.Idea;
 import server.model.Student;
 
 /**
