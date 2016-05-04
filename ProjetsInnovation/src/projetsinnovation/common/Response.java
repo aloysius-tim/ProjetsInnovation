@@ -36,15 +36,15 @@ public class Response implements Serializable {
         r += "\n\tmessage \t: " + message;
         r += "\n\tvalue \t\t: [";
         if(this.value instanceof Iterable || this.value instanceof Object[]) {
-            
             Iterable l = (Iterable) this.value;
             for(Object o : l) {
                 r += "\n\t\t";
                 r += o.toString();
                 
             }
+            r += "\n\t";
         }
-        r += "\n\t";
+        
         
         r += "]";
         return r;

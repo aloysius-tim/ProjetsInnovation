@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream;
 import java.lang.reflect.Method;
 import java.net.Socket;
 import projetsinnovation.common.Response;
+import projetsinnovation.common.model.*;
 import projetsinnovation.server.Speaker;
 
 /**
@@ -44,6 +45,20 @@ public class Client {
     public void call(String method) {
         try {
             Request request = new Request(method);
+            Speaker.speakWithTime("Sending request : " + request);
+            Speaker.speak("_______________________________");
+            oos.writeObject(request);
+            Response response = (Response)ois.readObject();
+            Speaker.speakWithTime("Received response : " + response);
+            Speaker.speak("_______________________________");
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void call(String method, Object[] args) {
+        try {
+            Request request = new Request(method, args);
             Speaker.speakWithTime("Sending request : " + request);
             Speaker.speak("_______________________________");
             oos.writeObject(request);
