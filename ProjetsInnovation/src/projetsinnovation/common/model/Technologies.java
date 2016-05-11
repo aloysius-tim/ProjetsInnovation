@@ -3,8 +3,19 @@ package projetsinnovation.common.model;
 import java.io.Serializable;
 
 /**
- * Created by Aloysius_tim on 30/04/2016.
+ * The enum Technologies.
+ *
+ * @author Sofiane & Tim
  */
 public enum Technologies implements Serializable {
-    WEB, MOBILE, OTHER
+    /**
+     * Web technologies.
+     */
+    WEB, /**
+     * Mobile technologies.
+     */
+    MOBILE, /**
+     * Other technologies.
+     */
+    OTHER
 }

@@ -14,7 +14,7 @@ import projetsinnovation.common.model.*;
 
 /**
  *
- * @author Sofiane
+ * @author Sofiane & Tim
  */
 public class Service implements IProjetInnovation {
     

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import projetsinnovation.common.model.*;
 
 /**
- * Created by Aloysius_tim on 30/04/2016.
+ * @author Sofiane & Tim
  */
 public class ProjetInnovation implements IProjetInnovation {
     

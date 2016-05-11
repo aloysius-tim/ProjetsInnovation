@@ -16,7 +16,7 @@ import projetsinnovation.common.model.*;
 import projetsinnovation.server.Speaker;
 
 /**
- * @author Sofiane
+ * @author Sofiane & Tim
  */
 
 /**

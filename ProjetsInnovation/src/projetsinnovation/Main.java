@@ -10,7 +10,7 @@ import projetsinnovation.server.Speaker;
 
 /**
  *
- * @author Sofiane
+ * @author Sofiane & Tim
  */
 public class Main {
 

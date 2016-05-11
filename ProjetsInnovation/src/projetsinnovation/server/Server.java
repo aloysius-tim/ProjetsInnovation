@@ -14,7 +14,7 @@ import projetsinnovation.common.*;
 
 /**
  *
- * @author Sofiane
+ * @author Sofiane & Tim
  */
 public class Server {
     

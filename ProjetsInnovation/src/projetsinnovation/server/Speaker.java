@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  *
- * @author Sofiane
+ * @author Sofiane & Tim
  */
 public class Speaker {
     

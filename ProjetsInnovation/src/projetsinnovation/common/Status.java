@@ -1,8 +1,26 @@
 package projetsinnovation.common;
 
 /**
- * Created by matthieuberger on 30/04/2016.
+ * The enum Status.
  */
 public enum Status {
-    CODE404, CODE403, CODE200, CODE500, OTHER, NOSTATUS
+    /**
+     * Code 404 status.
+     */
+    CODE404, /**
+     * Code 403 status.
+     */
+    CODE403, /**
+     * Code 200 status.
+     */
+    CODE200, /**
+     * Code 500 status.
+     */
+    CODE500, /**
+     * Other status.
+     */
+    OTHER, /**
+     * Nostatus status.
+     */
+    NOSTATUS
 }
