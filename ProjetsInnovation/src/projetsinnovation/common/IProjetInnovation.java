@@ -5,21 +5,23 @@
  */
 package projetsinnovation.common;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
-import projetsinnovation.common.model.*;
+import projetsinnovation.server.model.*;
 
 /**
  * The interface Projet innovation.
  *
  * @author Sofiane & Tim
  */
-public interface IProjetInnovation {
+public interface IProjetInnovation extends Remote{
     /**
      * Gets ideas.
      *
      * @return the ideas
      */
-    ArrayList<Idea> getIdeas();
+    ArrayList<Idea> getIdeas() throws RemoteException;
 
     /**
      * Gets team.
@@ -27,7 +29,7 @@ public interface IProjetInnovation {
      * @param idea the idea
      * @return the team
      */
-    ArrayList<Student> getTeam(Idea idea);
+    ArrayList<Student> getTeam(Idea idea) throws RemoteException;
 
     /**
      * Create idea idea.
@@ -35,7 +37,7 @@ public interface IProjetInnovation {
      * @param idea the idea
      * @return the idea
      */
-    Idea createIdea(Idea idea);
+    Idea createIdea(Idea idea) throws RemoteException;
 
     /**
      * Subscribe to idea.
@@ -44,5 +46,5 @@ public interface IProjetInnovation {
      * @param student the student
      * @return the idea
      */
-    Idea subscribeTo(Idea idea, Student student);
+    Idea subscribeTo(Idea idea, Student student) throws RemoteException;
 }

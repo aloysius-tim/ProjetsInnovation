@@ -3,7 +3,7 @@ package projetsinnovation.server;
 import projetsinnovation.common.IProjetInnovation;
 
 import java.util.ArrayList;
-import projetsinnovation.common.model.*;
+import projetsinnovation.server.model.*;
 
 /**
  * @author Sofiane & Tim

@@ -5,77 +5,30 @@
 */
 package projetsinnovation.client;
 
-import projetsinnovation.common.Request;
+import projetsinnovation.common.IProjetInnovation;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Method;
-import java.net.Socket;
-import projetsinnovation.common.Response;
-import projetsinnovation.common.model.*;
-import projetsinnovation.server.Speaker;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.ArrayList;
+
+import projetsinnovation.server.model.*;
 
 /**
  * @author Sofiane & Tim
  */
 
-/**
- * @author Alain Defrance
- */
 public class Client {
-    private ObjectInputStream ois;
-    private ObjectOutputStream oos;
-    private String name;
-    private Socket server;
-    
-    public Client() {
-        this.connect("localhost", 6000);
-    }
-    
-    private void connect(String host, Integer port) {
+    public static void main(String[] argv) {
         try {
-            this.server = new Socket(host, port);
-            ois = new ObjectInputStream(this.server.getInputStream());
-            oos = new ObjectOutputStream(this.server.getOutputStream());
+            Registry registry = LocateRegistry.getRegistry(10000);
+            IProjetInnovation stub = (IProjetInnovation) registry.lookup("Innovation");
+
+            System.out.println(stub.createIdea(new Idea("Desc1", Technologies.WEB, new Student("tim", "keynes"), new ArrayList<Student>())).toString());
+            System.out.println(stub.createIdea(new Idea("Desc2", Technologies.WEB, new Student("tim", "keynes"), new ArrayList<Student>())).toString());
+            System.out.println(stub.getIdeas().toString());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    public void call(String method) {
-        try {
-            this.call(method, null);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void call(String method, Object[] args) {
-        try {
-            Request request = new Request(method, args);
-            Speaker.speakWithTime("Sending request : " + request);
-            Speaker.speak("_______________________________");
-            oos.writeObject(request);
-            Response response = (Response)ois.readObject();
-            Speaker.speakWithTime("Received response : " + response);
-            Speaker.speak("_______________________________");
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    private void getIdeas() {this.call("getIdeas");}
-    private void createIdea(Idea idea) {this.call("createIdea", new Object[]{idea});}
-    private void getTeam(Idea idea) {this.call("getTeam", new Object[]{idea});}
-    private void subscribeTo(Idea idea, Student student) {this.call("subscribeTo", new Object[]{idea,student});}
-    
-    public static void main(String[] args) {
-        Client client = new Client();
-        
-        Student s = new Student("John", "john@doe.com"); // Nouvel étudiant
-        Idea idea = new Idea("Je veux faire un nouveau Uber", Technologies.WEB, s, null); // Idée déjà existante
-        Idea idea2 = new Idea("Voici une nouvelle idée", Technologies.MOBILE, s, null); // Nouvelle idée
-
-        client.getTeam(idea);
     }
 }
