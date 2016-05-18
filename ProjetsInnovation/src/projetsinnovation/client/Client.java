@@ -9,10 +9,9 @@ import projetsinnovation.common.Request;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.lang.reflect.Method;
 import java.net.Socket;
 import projetsinnovation.common.Response;
-import projetsinnovation.common.model.*;
+import projetsinnovation.server.model.*;
 import projetsinnovation.server.Speaker;
 
 /**

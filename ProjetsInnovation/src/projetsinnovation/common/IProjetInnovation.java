@@ -6,7 +6,7 @@
 package projetsinnovation.common;
 
 import java.util.ArrayList;
-import projetsinnovation.common.model.*;
+import projetsinnovation.server.model.*;
 
 /**
  * The interface Projet innovation.

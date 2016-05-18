@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import projetsinnovation.common.*;
-import projetsinnovation.common.model.*;
+import projetsinnovation.server.model.*;
 
 /**
  *
@@ -52,6 +52,8 @@ public class Service implements IProjetInnovation {
         } catch(IllegalAccessException e) {
             return new Response(Status.CODE403, "Oops... Authorisation non accordée.", e);
         } catch(InvocationTargetException e) {
+            return new Response(Status.CODE500, "Oops... Le serveur a planté :/", e);
+        } catch (Exception e){
             return new Response(Status.CODE500, "Oops... Le serveur a planté :/", e);
         }
     }

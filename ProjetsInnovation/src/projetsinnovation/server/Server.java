@@ -17,7 +17,6 @@ import projetsinnovation.common.*;
  * @author Sofiane & Tim
  */
 public class Server {
-    
     private Integer port = 8000;
     private ServerSocket socket;
     private Service service;
