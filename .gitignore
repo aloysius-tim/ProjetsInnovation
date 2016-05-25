@@ -1,5 +1,6 @@
 /ProjetsInnovation/ProjetsInnovation.iml
 setup.py
+.vscode/
 
 ### Django ###
 *.log
