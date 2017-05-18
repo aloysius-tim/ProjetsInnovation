@@ -23,4 +23,4 @@
 ###Remarques
 * ObjectInputStream et ObjectOutputStream devront être utilisés afin de communiquer efficacement avec notre serveur.
 * Les classes communes au serveur et au client sont fournis en parralèle au format .class et décrits sous forme de javadoc.
-* Cette implémentation n'est pas persistante et ne conserve donc pas les données après "extension".
+* Cette implémentation n'est pas persistante et ne conserve donc pas les données après "extinction".
